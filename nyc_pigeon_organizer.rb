@@ -1,27 +1,44 @@
+require 'pry'
+
 def nyc_pigeon_organizer(data)
   # write your code here!
-    names = []
-  pigeon_hash = {}
+  #   obj = Hash.new(0)
+  # data.each do |k, v|
+  #   v.each do |key, var|
+  #     var.each do |ele|
+  #       # binding.pry
+  #       if !obj[ele]
+  #         obj[ele] = {}
+  #       else
+  #         obj[ele] = {}
+  #       end
 
-  data.each do |attribute, items|
-    items.each do |feature, arr|
-      arr.each do |name|
-        names << name if !names.include?(name)
-      end
-    end
-  end
+  #       if !obj[ele][k]
+  #         obj[ele][k] = []
+  #       end
+  #       obj[ele][k] << key.to_s
+  #       binding.pry
+  #       # new_hash[name][key] << new_value.to_s
+  #     end
+  #   end
+  # end
+  # return obj
   
-  names.each do |nombre|
-    pigeon_hash[nombre] = Hash.new {|k, v| k[v] = []}
-    data.each do |attribute, items|
-      pigeon_hash[nombre][attribute]
-      items.each do |feature, arr|
-        arr.each do |name|
-          pigeon_hash[name][attribute] << feature.to_s if name == nombre
+  obj = Hash.new(0)
+  data.each do |k, v|
+    v.each do |key, var|
+      var.each do |ele|
+        if !obj[ele]
+          obj[ele] = {}
         end
+        if !obj[ele][k]
+          obj[ele][k] = []
+        end
+        obj[ele][k] << key.to_s
+        # new_hash[name][key] << new_value.to_s
       end
     end
   end
-  
-  pigeon_hash
+  return obj
 end
+
